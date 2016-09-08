@@ -1,4 +1,6 @@
 .idea
+.idea.modules
+idea.bat
 out
 target
 *.iml
