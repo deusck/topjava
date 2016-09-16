@@ -6,7 +6,8 @@ import ru.javawebinar.topjava.service.MealService;
  * GKislin
  * 06.03.2015.
  */
-public class MealRestController {
+public class MealRestController
+{
     private MealService service;
 
 }

@@ -4,25 +4,31 @@ package ru.javawebinar.topjava.model;
  * User: gkislin
  * Date: 22.08.2014
  */
-public class BaseEntity {
+public class BaseEntity
+{
     protected Integer id;
 
-    public BaseEntity() {
+    public BaseEntity()
+    {
     }
 
-    protected BaseEntity(Integer id) {
+    protected BaseEntity(Integer id)
+    {
         this.id = id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Integer id)
+    {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Integer getId()
+    {
         return id;
     }
 
-    public boolean isNew() {
+    public boolean isNew()
+    {
         return (this.id == null);
     }
 }
