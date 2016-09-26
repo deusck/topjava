@@ -1,7 +1,3 @@
-public class MealRestController {
-    private static final Logger LOG = LoggerFactory.getLogger(MealRestController.class);
-
-    @Autowired
 
 package ru.javawebinar.topjava.web.meal;
 
@@ -27,6 +23,9 @@ import java.util.List;
 @Controller
 public class MealRestController
 {
+    private static final Logger LOG = LoggerFactory.getLogger(MealRestController.class);
+
+    @Autowired
     private MealService service;
 
     public Meal get(int id) {
