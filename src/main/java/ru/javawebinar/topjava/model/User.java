@@ -10,7 +10,8 @@ import java.util.Set;
  * User: gkislin
  * Date: 22.08.2014
  */
-public class User extends NamedEntity {
+public class User extends NamedEntity
+{
 
     protected String email;
 
@@ -24,7 +25,8 @@ public class User extends NamedEntity {
 
     protected int caloriesPerDay = MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
-    public User() {
+    public User()
+    {
     }
 
     public User(Integer id, String name, String email, String password, Role role, Role... roles) {

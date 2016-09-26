@@ -2,6 +2,8 @@ package ru.javawebinar.topjava.util;
 
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.MealWithExceed;
+import ru.javawebinar.topjava.model.Role;
+import ru.javawebinar.topjava.model.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,15 +16,30 @@ import java.util.stream.Collectors;
  * GKislin
  * 31.05.2015.
  */
-public class MealsUtil {
-    public static final List<Meal> MEALS = Arrays.asList(
-            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак", 500),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед", 1000),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 10, 0), "Завтрак", 1000),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 13, 0), "Обед", 500),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510)
+public class MealsUtil
+{
+
+    public static final Set<Role> roles = new HashSet<>();
+    {
+        roles.add(Role.ROLE_USER);
+    }
+
+    public static final List<User> USERS = Arrays.asList(
+            new User(1, "Denis","deus_ck@mail.ru", "123", Role.ROLE_USER),
+            new User(2, "Кристина","deus_ck@mail.ru", "123", Role.ROLE_USER)
     );
+
+
+    public static final List<Meal> MEALS = Arrays.asList(
+            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак", 500, USERS.get(0)),
+            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед", 1000, USERS.get(0)),
+            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500,USERS.get(0)),
+            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 10, 0), "Завтрак", 1000, USERS.get(1)),
+            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 13, 0), "Обед", 500 , USERS.get(1)),
+            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510, USERS.get(1))
+    );
+
+
 
     public static final int DEFAULT_CALORIES_PER_DAY = 2000;
 

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.javawebinar.topjava.model.User;
+import ru.javawebinar.topjava.repository.mock.InMemoryUserRepositoryImpl;
 import ru.javawebinar.topjava.service.UserService;
 
 import java.util.List;
@@ -11,11 +12,12 @@ import java.util.List;
 /**
  * User: gkislin
  */
-public abstract class AbstractUserController {
+public abstract class AbstractUserController
+{
     protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private UserService service;
+    private InMemoryUserRepositoryImpl service;
 
     public List<User> getAll() {
         LOG.info("getAll");
@@ -41,7 +43,7 @@ public abstract class AbstractUserController {
     public void update(User user, int id) {
         user.setId(id);
         LOG.info("update " + user);
-        service.update(user);
+        service.save(user);
     }
 
     public User getByMail(String email) {

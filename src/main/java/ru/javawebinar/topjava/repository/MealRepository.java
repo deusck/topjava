@@ -1,8 +1,10 @@
 package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.model.User;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * GKislin
@@ -10,7 +12,9 @@ import java.util.Collection;
  */
 public interface MealRepository
 {
-    Meal save(Meal Meal);
+    List<Meal> getByUser(User user);
+
+    Meal save(Meal meal);
 
     void delete(int id);
 

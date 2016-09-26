@@ -7,7 +7,9 @@ import ru.javawebinar.topjava.repository.UserRepository;
 import ru.javawebinar.topjava.util.exception.ExceptionUtil;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * GKislin
@@ -35,8 +37,11 @@ public class UserServiceImpl implements UserService {
         return ExceptionUtil.checkNotFound(repository.getByEmail(email), "email=" + email);
     }
 
-    public List<User> getAll() {
-        return repository.getAll();
+    public List<User> getAll()
+    {
+        return repository.getAll().stream()
+                .sorted((o1, o2) -> o1.getName().compareTo(o2.getName()))
+                .collect(Collectors.toList());
     }
 
     public void update(User user) {
