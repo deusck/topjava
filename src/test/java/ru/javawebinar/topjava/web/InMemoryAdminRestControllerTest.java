@@ -1,8 +1,10 @@
 package ru.javawebinar.topjava.web;
 
 import org.junit.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Controller;
 import ru.javawebinar.topjava.UserTestData;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
@@ -15,8 +17,13 @@ import java.util.Collection;
 import static ru.javawebinar.topjava.UserTestData.ADMIN;
 import static ru.javawebinar.topjava.UserTestData.USER;
 
-public class InMemoryAdminRestControllerTest {
+@Controller
+public class InMemoryAdminRestControllerTest
+{
+
     private static ConfigurableApplicationContext appCtx;
+
+    @Autowired
     private static AdminRestController controller;
 
     @BeforeClass
@@ -34,6 +41,7 @@ public class InMemoryAdminRestControllerTest {
     @Before
     public void setUp() throws Exception {
         // Re-initialize
+       // appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml");
         UserRepository repository = appCtx.getBean(UserRepository.class);
         repository.getAll().forEach(u -> repository.delete(u.getId()));
         repository.save(USER);
