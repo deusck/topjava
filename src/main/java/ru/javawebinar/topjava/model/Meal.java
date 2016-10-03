@@ -8,8 +8,8 @@ import java.time.LocalTime;
  * GKislin
  * 11.01.2015.
  */
-public class Meal extends BaseEntity
-{
+public class Meal extends BaseEntity {
+
     private final LocalDateTime dateTime;
 
     private final String description;
