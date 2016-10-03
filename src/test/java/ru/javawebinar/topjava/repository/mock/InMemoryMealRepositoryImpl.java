@@ -7,10 +7,14 @@ import ru.javawebinar.topjava.util.MealsUtil;
 import ru.javawebinar.topjava.util.TimeUtil;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.*;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static ru.javawebinar.topjava.UserTestData.ADMIN_ID;
 import static ru.javawebinar.topjava.UserTestData.USER_ID;
@@ -66,10 +70,7 @@ public class InMemoryMealRepositoryImpl implements MealRepository
 
     public Collection<Meal> getAll(int userId)
     {
-        Map<Integer, Meal> meals = repository.get(userId);
-        return meals == null ?
-                Collections.emptyList() :
-                meals.values().stream().sorted(MEAL_COMPARATOR).collect(Collectors.toList());
+        return getAllStream(userId).collect(Collectors.toList());
     }
 
     @Override
@@ -77,8 +78,14 @@ public class InMemoryMealRepositoryImpl implements MealRepository
     {
         Objects.requireNonNull(startDateTime);
         Objects.requireNonNull(endDateTime);
-        return getAll(userId).stream()
+        return getAllStream(userId)
                 .filter(um -> TimeUtil.isBetween(um.getDateTime(), startDateTime, endDateTime))
                 .collect(Collectors.toList());
+    }
+
+    private Stream<Meal> getAllStream(int userId) {
+        Map<Integer, Meal> meals = repository.get(userId);
+        return meals == null ?
+                Stream.empty() : meals.values().stream().sorted(MEAL_COMPARATOR);
     }
 }
