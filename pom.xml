@@ -26,6 +26,10 @@
         <postgresql.version>9.4.1211</postgresql.version>
         <!--    Tests  -->
         <junit.version>4.12</junit.version>
+
+        <!-- Hibernate -->
+        <hibernate.version>5.2.2.Final</hibernate.version>
+        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
     </properties>
 
     <build>
@@ -87,9 +91,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
+            <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -98,6 +103,31 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>2.2.5</version>
         </dependency>
 
         <dependency>
@@ -131,11 +161,13 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
         <dependency>
             <groupId>javaee</groupId>
             <artifactId>javaee-api</artifactId>
             <version>5</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -144,10 +176,4 @@
         </dependency>
 
     </dependencies>
-
-    <profiles>
-    </profiles>
-
-    <dependencyManagement>
-    </dependencyManagement>
 </project>
