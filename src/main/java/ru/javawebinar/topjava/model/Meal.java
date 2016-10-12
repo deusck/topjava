@@ -92,6 +92,14 @@ public class Meal extends BaseEntity {
         this.user = user;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public boolean isNew()
     {
         return id == null;
