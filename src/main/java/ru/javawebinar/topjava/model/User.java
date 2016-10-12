@@ -21,17 +21,17 @@ public class User extends NamedEntity {
     public static final String ALL_SORTED = "User.getAllSorted";
     public static final String BY_EMAIL = "User.getByEmail";
 
-    protected String email;
+    private String email;
 
-    protected String password;
+    private String password;
 
-    protected boolean enabled = true;
+    private boolean enabled = true;
 
-    protected Date registered = new Date();
+    private Date registered = new Date();
 
-    protected Set<Role> roles;
+    private Set<Role> roles;
 
-    protected int caloriesPerDay = MealsUtil.DEFAULT_CALORIES_PER_DAY;
+    private int caloriesPerDay = MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
     public User() {
     }
