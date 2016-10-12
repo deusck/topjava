@@ -1,3 +1,5 @@
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.LAZY)
 package ru.javawebinar.topjava.model;
 
 import ru.javawebinar.topjava.util.MealsUtil;
